@@ -7,8 +7,8 @@ install_requirements:
 check_code:
 	@flake8 scripts/* explainable_predictions/*.py
 
-black:
-	@black scripts/* explainable_predictions/*.py
+format:
+	@black tests/*.py explainable_predictions/*.py
 
 test:
 	@coverage run -m pytest tests/*.py
