@@ -1,6 +1,6 @@
 from typing import Optional
 from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
-from base_classes._base_explainer import BaseExplainer
+from explainable_predictions.base_classes import BaseExplainer
 import pandas as pd
 import shap
 import tqdm
@@ -21,7 +21,7 @@ class RandomForestExplainer(BaseExplainer):
         self.explainer = None
 
     
-    def fit(self, X: pd.DataFrame, y: pd.Series):
+    def fit(self, X: pd.DataFrame, y: pd.Series, params: Optional[dict] = None):
         """_summary_
 
         Args:
@@ -73,14 +73,14 @@ class RandomForestExplainer(BaseExplainer):
             ValueError: _description_
         """
         if self.objective == 'regression':
-            model = RandomForestRegressor(**params)
+            model = RandomForestRegressor()
             model.fit(X, y)
             
             return model
 
 
         elif self.objective == 'classification':
-            model = RandomForestClassifier(**params)
+            model = RandomForestClassifier()
             model.fit(X, y)
             
             return model

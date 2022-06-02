@@ -16,18 +16,18 @@ __all__ = ["BaseExplainer"]
 class BaseExplainer(ABC):
     """Base class for encapsulation of all predictive models"""
 
-    def __init__(
-        self,
-        target_col: str,
-        features_cols: list = None,
-        categorical_features_cols: list = None,
-        col_dtypes: dict = None,
-        random_seed: int = 42,
-    ):
+    def __init__(self, objective: Optional[str] = 'regression') -> None:
+        """_summary_
+
+        Args:
+            objective (str, optional): Objective of your model. Options: 'regression' or 'classification' Defaults to 'regression'.
+        """
+        self.objective = objective
+        self.model = None
+        self.explainer = None
         
 
         # Forces random seed, so all methods that use it are replicable
-        np.random.seed(random_seed)
 
     @abstractmethod
     def fit(self, X: pd.DataFrame, y: pd.Series):
