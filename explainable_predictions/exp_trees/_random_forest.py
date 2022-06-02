@@ -113,8 +113,7 @@ class RandomForestExplainer(BaseExplainer):
         if graphical_explanation:
             for i in tqdm.tqdm(range(len(X))):
                 shap_values = self.explainer(X.iloc[i])
-                shap.plots.force(shap_values[i])
-                plt.show()
+                shap.force_plot(self.explainer.expected_value, shap_values.values,  show=False, matplotlib=True)
         else:
             shap_values = self.explainer.shap_values(X)
         
