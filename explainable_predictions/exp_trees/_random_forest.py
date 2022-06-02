@@ -44,9 +44,9 @@ class RandomForestExplainer(BaseExplainer):
             raise ValueError('Model not fitted. Call fit() first.')
 
         prediction = self.model.predict(X)
-        self._predict_explainer(X, graphical_explanation)
+        shap_values = self._predict_explainer(X, graphical_explanation)
 
-        return prediction
+        return prediction, shap_values
         
 
     
