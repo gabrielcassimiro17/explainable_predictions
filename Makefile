@@ -5,10 +5,10 @@ install_requirements:
 	@pip install -r requirements.txt
 
 check_code:
-	@flake8 scripts/* explainable-predictions/*.py
+	@flake8 scripts/* explainable_predictions/*.py
 
 black:
-	@black scripts/* explainable-predictions/*.py
+	@black scripts/* explainable_predictions/*.py
 
 test:
 	@coverage run -m pytest tests/*.py
@@ -20,8 +20,8 @@ clean:
 	@rm -f .coverage
 	@rm -fr */__pycache__ */*.pyc __pycache__
 	@rm -fr build dist
-	@rm -fr explainable-predictions-*.dist-info
-	@rm -fr explainable-predictions.egg-info
+	@rm -fr explainable_predictions-*.dist-info
+	@rm -fr explainable_predictions.egg-info
 
 install:
 	@pip install . -U
